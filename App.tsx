@@ -33,16 +33,16 @@ export default function App() {
     const specialChar = '!@#$%^&*()_+[]{}|;:,.<>?';
   
     if (upperCase){
-      characterList += upperCase;
+      characterList += upperCaseChar;
     }
     if (lowerCase){
-      characterList += lowerCase;
+      characterList += lowerCaseChar;
     } 
     if (numbers){
-      characterList += numbers;
+      characterList += digitChar;
     }
     if (symbols){
-      characterList += symbols;
+      characterList += specialChar;
     }
   
     const createdPassword = createPassword(characterList, passwordLenght);
