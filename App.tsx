@@ -125,21 +125,23 @@ export default function App() {
                     <Text style = {styles.heading}>Include Symbols</Text>
                     <BouncyCheckBox isChecked={symbols} onPress={() => setSymbols(!symbols)} fillColor='#FF8C00'/>
                   </View>
-
-                  <View style={styles.formActions}>
-                    <TouchableOpacity 
-                      disabled={!isValid}
-                      style={styles.primaryBtn}
-                      onPress={handleSubmit as unknown as () => void}
-                    ><Text style = {styles.primaryBtnTxt}>Generate Password</Text></TouchableOpacity>
-                    <TouchableOpacity
-                      style={styles.secondaryBtn}
-                      onPress={ () => {
-                        handleReset();
-                        resetPassword();
-                      }}
-                    ><Text style={styles.secondaryBtnTxt}>Reset</Text></TouchableOpacity>
-                  </View>
+                  {(lowerCase || upperCase || numbers || symbols) ? (
+                      <View style={styles.formActions}>
+                      <TouchableOpacity 
+                        disabled={!isValid}
+                        style={styles.primaryBtn}
+                        onPress={handleSubmit as unknown as () => void}
+                      ><Text style = {styles.primaryBtnTxt}>Generate Password</Text></TouchableOpacity>
+                      <TouchableOpacity
+                        style={styles.secondaryBtn}
+                        onPress={ () => {
+                          handleReset();
+                          resetPassword();
+                        }}
+                      ><Text style={styles.secondaryBtnTxt}>Reset</Text></TouchableOpacity>
+                    </View>
+                  ): (<View><Text style={styles.errorText}>Please check any one checkbox</Text></View>)}
+                  
                 </>
               )}
             </Formik>
